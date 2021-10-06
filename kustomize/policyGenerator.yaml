@@ -30,6 +30,9 @@ policies:
                   containers:
                     - name: gitops-demo
                       image: quay.io/centos7/httpd-24-centos7:2.4
-  - name: policy-require-labels
+  - name: policy-kyverno-require-labels
     manifests:
       - path: policy2/kyverno.yaml
+  - name: policy-gatekeeper-require-labels
+    manifests:
+      - path: policy3/gatekeeper.yaml
