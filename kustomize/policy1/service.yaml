@@ -7,9 +7,9 @@ metadata:
     app: gitops-demo
 spec:
   ports:
-  - name: https
-    port: '{{ fromConfigMap "configs" "web-app-config" "service-port" | toInt }}'
+  - name: http
+    port: 80
     protocol: TCP
-    targetPort: 8443
+    targetPort: 8080
   selector:
     app: gitops-demo

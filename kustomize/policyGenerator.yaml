@@ -5,34 +5,19 @@ metadata:
 placementBindingDefaults:
   name: demo-placement-binding
 policyDefaults:
-  controls:
-    - PR.DS-1 Data-at-rest
   namespace: policies
   placement:
     name: demo-placement-rule
     clusterSelectors:
-      app-cluster: true
+      vendor: OpenShift
   remediationAction: enforce
   severity: medium
 policies:
   - name: policy-app
     manifests:
       - path: policy1
-        patches:
-          - apiVersion: apps/v1
-            kind: Deployment
-            metadata:
-              name: gitops-demo
-              namespace: gitops-demo
-            spec:
-              template:
-                spec:
-                  containers:
-                    - name: gitops-demo
-                      image: quay.io/centos7/httpd-24-centos7:2.4
-  - name: policy-kyverno-require-labels
-    manifests:
-      - path: policy2/kyverno.yaml
   - name: policy-gatekeeper-require-labels
+    consolidateManifests: false
     manifests:
-      - path: policy3/gatekeeper.yaml
+      - path: policy2/install-gatekeeper.yaml
+      - path: policy2/gatekeeper.yaml

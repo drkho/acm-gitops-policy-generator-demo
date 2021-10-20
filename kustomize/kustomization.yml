@@ -1,6 +1,4 @@
 generators:
   - policyGenerator.yaml
-patchesStrategicMerge:
-  - deployment-patch.yaml
 commonLabels:
   env: prod

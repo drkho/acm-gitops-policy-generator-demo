@@ -20,19 +20,5 @@ spec:
           image: quay.io/centos7/httpd-24-centos7:2021-08-06T13_04_45_02_00-905d024
           ports:
             - containerPort: 8080
-            - containerPort: 8443
-          volumeMounts:
-            - name: cert
-              mountPath: /etc/httpd/tls
-              readOnly: true
-      volumes:
-        - name: cert
-          secret:
-            secretName: cert
-            items:
-              - key: tls.crt
-                path: localhost.crt
-              - key: tls.key
-                path: localhost.key
   triggers:
     - type: ConfigChange
